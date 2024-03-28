@@ -8,7 +8,6 @@
         "pre-copy": "cd .. && npm run  copy.lib base-baileys-mongo",
         "start": "node app.js",
         "docs": "jsdoc -c jsdoc.json"
-
     },
     "keywords": [],
     "dependencies": {
@@ -19,6 +18,7 @@
         "@bot-whatsapp/provider": "latest",
         "@whiskeysockets/baileys": "6.5.0",
         "cache-manager": "5.2.4",
+        "dotenv": "^16.4.5",
         "jsdoc": "^4.0.2",
         "mime-types": "2.1.35",
         "mongodb": "^4.12.1",
