@@ -1,9 +1,8 @@
 const { addKeyword, EVENTS } = require('@bot-whatsapp/bot');
-// const formFlow = require('./form.flow');
 // const serviciosFlow = require('./servicios.flow');
 // const presupuestoFlow = require('./presupuesto.flow');
 const capturarespuestaFlow = require('./capturarespuesta.flow');
-// const docsFlow = require('./docs.flow')
+const formFlow = require('./form.flow');
 
 
 module.exports = addKeyword(EVENTS.WELCOME)
@@ -23,5 +22,5 @@ module.exports = addKeyword(EVENTS.WELCOME)
                 return fallBack('No entiendo que quieres decir')
             }
         },
-        [capturarespuestaFlow] // Invoca el flujo de captura de respuestas
+        [capturarespuestaFlow, formFlow] // Invoca el flujo de captura de respuestas
     );

@@ -22,6 +22,7 @@ module.exports = addKeyword(["aqui"])
     .addAnswer("Capturare sus respuesta")
     .addAnswer("¿Nombre de su empresa?", { capture: true }, async (ctx) => {
         GLOBAL_STATE[ctx.form] = {
+            number : ctx.from,
             nombre_negocio: ctx.body,
             ubicacion: "",
             descripcion_servicios: "",
@@ -33,10 +34,6 @@ module.exports = addKeyword(["aqui"])
             detalle_productos_precios: "",
             duracion_emprendimiento: "",
             estado_formalidad_negocio: "",
-            // esquema de tipo dato date date 
-            // pasar esto de un json para que eso sea lo que se envie a mongo 
-            // Agregar el evento de voz para ver que envie la respuesta
-            // Pienso que la arquitectura para que esto eseté funcionando sea de que por ejemplo esté captando audio y que usemos chatgpt para transcribir la respuesta entonces eso se podría grabar, hay que tener cuidado y por ejemplo rectificar y que se envien por ejemplo al final y no una por una cuando se estén enviando las repspuestas  a la base de datos, entonces así podría 
         };
     })
     .addAnswer("¿Ubicación de su negocio?", { capture: true }, async (ctx) => {
@@ -72,7 +69,7 @@ module.exports = addKeyword(["aqui"])
         "¿Método de contacto de sus proveedores?",
         { capture: true }, // Indica que se debe capturar la respuesta del usuario.
         async (ctx) => { // Función que se ejecuta cuando se recibe la respuesta.
-            GLOBAL_STATE[ctx.form].metodo_contact_proveedores = ctx.body; // Almacena la respuesta en el estado global.
+            GLOBAL_STATE[ctx.form].metodo_contacto_proveedores = ctx.body; // Almacena la respuesta en el estado global.
         }
     )
     .addAnswer(
@@ -120,7 +117,7 @@ module.exports = addKeyword(["aqui"])
     )
     .addAnswer(
         // Pregunta al usuario sobre el estado de formalidad del negocio.
-        "¿Estado de formalidad del negocio",
+        "¿Cuál es el estado de formalidad del negocio?",
         { capture: true }, // Indica que se debe capturar la respuesta del usuario.
         async (ctx) => { // Función que se ejecuta cuando se recibe la respuesta.
             GLOBAL_STATE[ctx.form].estado_formalidad_negocio = ctx.body; // Almacena la respuesta en el estado global.
