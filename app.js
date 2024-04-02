@@ -6,7 +6,8 @@ require('dotenv').config()
 const { createBot, createProvider, createFlow, addKeyword, EVENTS } = require('@bot-whatsapp/bot')
 
 // Importación de módulos específicos para el bot de WhatsApp.
-const QRPortalWeb = require('@bot-whatsapp/portal')
+// const QRPortalWeb = require('@bot-whatsapp/portal')
+const Queue = require('queue-promise')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MongoAdapter = require('@bot-whatsapp/database/mongo')
 const welcomeFlow = require('./flows/welcome.flow')
@@ -16,7 +17,23 @@ const respuestaVozFlow = require('./flows/respuestaVoz.flow')
 // const capturaVozFlow = require('./flows/capturaVoz.flow')
 const { init } = require("bot-ws-plugin-openai");
 const { handlerAI } = require("./utils");
+const ServerHttp = require('./src/http')
+const ChatwootClass = require('./src/chatwoot/chatwoot.class')
+const { handlerMessage } = require('./src/chatwoot')
+const PORT = process.env.PORT ?? 3001
 
+
+const serverHttp = new ServerHttp(PORT)
+const chatwoot = new ChatwootClass({
+  account:process.env.CHATWOOT_ACCOUNT_ID,
+  token:process.env.CHATWOOT_TOKEN_ID,
+  endpoint:process.env.CHATWOOT_ENDPOINT_ID
+})
+
+const queue = new Queue({
+  concurrent:1,
+  interval:500
+})
 // add
 /**
  * URI de la base de datos MongoDB.
@@ -58,6 +75,10 @@ const capturaVozFlow = addKeyword(EVENTS.VOICE_NOTE).addAction(
   }
 );
 
+const flowPrincipal = addKeyword('hola')
+    .addAnswer('Buenas bienvenido a mi ecommerce')
+    .addAnswer('¿Como puedo ayudarte el dia de hoy?')
+
 /* FIN CAPTURA */
 
 
@@ -68,8 +89,8 @@ const main = async () => {
         dbName: MONGO_DB_NAME, // Nombre de la base de datos
     })
     // Configuración del flujo del bot con la bienvenida y captura de respuestas
+    // const adapterFlow = createFlow([flowPrincipal])
     const adapterFlow = createFlow([welcomeFlow, respuestaVozFlow, capturaVozFlow])
-    // const adapterFlow = createFlow([bienvenida])
     // Configuración del proveedor del bot
     const adapterProvider = createProvider(BaileysProvider)
 
@@ -84,13 +105,42 @@ const main = async () => {
       employeesAddon.employees(employees);
 
     // Creación del bot con el flujo, proveedor y base de datos configurados
-    createBot({
+    const bot = await createBot({
         flow: adapterFlow,
         provider: adapterProvider,
         database: adapterDB,
     })
+
+
+    serverHttp.initialization(bot)
+
+    // Los mensajes entrantes al bot (cuando el cliente nos escribe)
+    adapterProvider.on('message', (payload) => {
+      queue.enqueue(async () => {
+        await handlerMessage({
+            phone:payload.from,
+            name:payload.pushName,
+            message:payload.body,
+            mode:'incoming'
+        }, chatwoot)
+      });
+    })
+    
+    // Los mensajes salientes (cuando contesta el bot)
+    bot.on('send_message', (payload) => {
+      queue.enqueue(async () => {
+        await handlerMessage({
+          phone:payload.numberOrId,
+          name:payload.pushName,
+          message:payload.answer,
+          mode:'outgoing'
+      }, chatwoot)
+      });
+    })
+
+
     // Inicialización del portal web QR
-    QRPortalWeb()
+    // QRPortalWeb()
 }
 
 // Llamada a la función principal para iniciar el bot

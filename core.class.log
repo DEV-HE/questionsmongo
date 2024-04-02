@@ -1,16 +1,127 @@
 [handleMsg]:  {
   key: {
-    remoteJid: '5219993648301@s.whatsapp.net',
+    remoteJid: '5219993259344@s.whatsapp.net',
     fromMe: false,
-    id: 'AFDB737A1A6BE55C7AC9A9BF1BBF6490',
+    id: 'DAEE0C9331C598479899C6A880D353CB',
     participant: undefined
   },
-  messageTimestamp: 1711748004,
-  pushName: 'Rosa Feria',
+  messageTimestamp: 1712084516,
+  pushName: 'Elias U Xool-Feria🎮',
+  broadcast: false,
+  message: Message {
+    conversation: 'Hola',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Hola',
+  from: '5219993259344'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5219993259344@s.whatsapp.net',
+    fromMe: false,
+    id: '5A15A055DD7AADBEEC66B90705317185',
+    participant: undefined
+  },
+  messageTimestamp: 1712084520,
+  pushName: 'Elias U Xool-Feria🎮',
+  broadcast: false,
+  message: Message {
+    conversation: 'Capturar',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Capturar',
+  from: '5219993259344'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_87715e3b-f938-43c7-9c82-6a0514f257ce',
+  keyword: 'key_19109a0f-a668-4e06-806e-bd3f7532a56a',
+  answer: '🙌 Hola, bienvenido a *VozFinanzas Chatbot*',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '3276148efc0210eae8e3abb38dc01759'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_2712f1b3-6773-4b3f-9a13-c21158b6cb14',
+  keyword: 'ans_87715e3b-f938-43c7-9c82-6a0514f257ce',
+  answer: 'Si buscas impulsar el crecimiento de tu empresa, estás en el lugar correcto.\n' +
+    'Por favor, elige una de las siguientes opciones para continuar:\n' +
+    '👉 Escribe *Aquí* si deseas registrarte directamente desde este chat. Es ideal para quienes usan nuestros servicios por primera vez.\n' +
+    '👉 Escribe *Form* si prefieres registrarte a través de nuestro formulario de Google. Esta opción es una alternativa de registro.\n' +
+    '👉 Escribe *Servicios* para conocer más sobre lo que ofrecemos. Un asistente te proporcionará la información necesaria.\n' +
+    '👉 Escribe *Presupuesto* si deseas recibir un estimado sobre el costo de nuestros servicios.',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 1000,
+    idle: null,
+    ref: null,
+    nested: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '27f4c225b21984baf4062ea857f809c9'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5219993259344@s.whatsapp.net',
+    fromMe: false,
+    id: '734C625D14AD0612C6F4D6E09A19D2BB',
+    participant: undefined
+  },
+  messageTimestamp: 1712084525,
+  pushName: 'Elias U Xool-Feria🎮',
+  broadcast: false,
+  message: Message {
+    conversation: 'Aquí',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Aquí',
+  from: '5219993259344'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5219993259344@s.whatsapp.net',
+    fromMe: false,
+    id: 'AD36394BBFDBECE3A418AA30ABB4E484',
+    participant: undefined
+  },
+  messageTimestamp: 1712084534,
+  pushName: 'Elias U Xool-Feria🎮',
   broadcast: false,
   message: Message {
     audioMessage: AudioMessage {
-      url: 'https://mmg.whatsapp.net/v/t62.7117-24/31583298_359074830464419_1931726691074354978_n.enc?ccb=11-4&oh=01_ASDTj1CniSh6In6I0-VVMXrT2mPQKCgBaqRkD0UOGbfiaA&oe=662EAFAB&_nc_sid=5e03e0&mms3=true',
+      url: 'https://mmg.whatsapp.net/v/t62.7117-24/18898263_793109722710230_553870976858711880_n.enc?ccb=11-4&oh=01_ASCja-m1hpvytQdkYiWZvcyxc0EskSHpipIMlnI7WogxmQ&oe=6633CD28&_nc_sid=5e03e0&mms3=true',
       mimetype: 'audio/ogg; codecs=opus',
       fileSha256: [Uint8Array],
       fileLength: [Long],
@@ -18,7 +129,7 @@
       ptt: true,
       mediaKey: [Uint8Array],
       fileEncSha256: [Uint8Array],
-      directPath: '/v/t62.7117-24/31583298_359074830464419_1931726691074354978_n.enc?ccb=11-4&oh=01_ASDTj1CniSh6In6I0-VVMXrT2mPQKCgBaqRkD0UOGbfiaA&oe=662EAFAB&_nc_sid=5e03e0',
+      directPath: '/v/t62.7117-24/18898263_793109722710230_553870976858711880_n.enc?ccb=11-4&oh=01_ASCja-m1hpvytQdkYiWZvcyxc0EskSHpipIMlnI7WogxmQ&oe=6633CD28&_nc_sid=5e03e0',
       mediaKeyTimestamp: [Long],
       waveform: [Uint8Array]
     },
@@ -27,6 +138,6 @@
       deviceListMetadataVersion: 2
     }
   },
-  body: '_event_voice_note__cd180428-2e8f-4051-abed-aea3daca28f0',
-  from: '5219993648301'
+  body: '_event_voice_note__f28039a9-e9c2-4fe8-986a-c84b25121305',
+  from: '5219993259344'
 }
