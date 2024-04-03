@@ -79,32 +79,32 @@ class ChatwootClass {
      */
     findContact = async (from) => {
         try {
-            const url = this.buildBaseUrl(`/contacts/search?q=${from}`);
+            const url = this.buildBaseUrl(`/contacts/search?q=${from}`)
+    
             const dataFetch = await fetch(url, {
                 headers: this.buildHeader(),
-                method: "GET",
-            });
+                method: 'GET'
+            })
     
-            const responseText = await dataFetch.text();
+            const text = await dataFetch.text();
     
-            // Verificar si la respuesta contiene el texto "Retry later"
-            if (responseText.includes("Retry later")) {
-                console.error(`[Error seachByNumber] Retry later`);
-                return null;
-            }
-    
+            // Verificar si la respuesta es un JSON válido
+            let data;
             try {
-                const data = JSON.parse(responseText);
-                return data.payload[0];
+                data = JSON.parse(text);
             } catch (error) {
-                console.error(`[Error seachByNumber] Response is not valid JSON: ${responseText}`);
-                return null;
+                console.error('[Error searchByNumber] Response is not valid JSON:', text);
+                return [];
             }
+    
+            return data.payload[0] || [];
+    
         } catch (error) {
-            console.error(`[Error seachByNumber]`, error);
-            return null;
+            console.error('[Error searchByNumber]', error);
+            return [];
         }
-    };
+    }
+    
     
 
     /**

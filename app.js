@@ -11,17 +11,17 @@ const Queue = require('queue-promise')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MongoAdapter = require('@bot-whatsapp/database/mongo')
 const welcomeFlow = require('./flows/welcome.flow')
-const respuestaVozFlow = require('./flows/respuestaVoz.flow')
-
+const { init } = require("bot-ws-plugin-openai");
+const MockAdapter = require("@bot-whatsapp/database/mock");
 // CHECAR
 // const capturaVozFlow = require('./flows/capturaVoz.flow')
-const { init } = require("bot-ws-plugin-openai");
-const { handlerAI } = require("./utils");
 const ServerHttp = require('./src/http')
 const ChatwootClass = require('./src/chatwoot/chatwoot.class')
 const { handlerMessage } = require('./src/chatwoot')
 const PORT = process.env.PORT ?? 3001
 
+const { handlerAI } = require("./utils");
+const { textToVoice } = require("./services/eventlab");
 
 const serverHttp = new ServerHttp(PORT)
 const chatwoot = new ChatwootClass({
@@ -34,30 +34,46 @@ const queue = new Queue({
   concurrent:1,
   interval:500
 })
-// add
-/**
- * URI de la base de datos MongoDB.
- * @type {string}
- */
-const MONGO_DB_URI = process.env.MONGO_DB_URI;
 
-/**
- * Nombre de la base de datos MongoDB.
- * @type {string}
- */
-const MONGO_DB_NAME = process.env.MONGO_DB_NAME;
-
-
-/* INICIO CAPTURA */
 const employeesAddonConfig = {
   model: "gpt-3.5-turbo-0301",
   temperature: 0,
   apiKey: process.env.OPENAI_API_KEY,
 };
+
 const employeesAddon = init(employeesAddonConfig);
 
 
-const capturaVozFlow = addKeyword(EVENTS.VOICE_NOTE).addAction(
+const flowStaff = addKeyword(EVENTS.ACTION).addAnswer(
+  ["Claro que te interesa?", "mejor te envio audio.."],
+  null,
+  async (ctx, { flowDynamic, state, provider }) => {
+    console.log("🙉 texto a voz....");
+    try {
+      const currentState = state.getMyState();
+      const path = await textToVoice(currentState.answer);
+      console.log(`🙉 Fin texto a voz....[PATH]:${path}`);
+      // await flowDynamic({ body: "escucha", media: path });
+
+      const id = ctx.key.remoteJid
+      const sock = await provider.getInstance()
+      await sock.sendMessage(
+        id, 
+        { audio: { url: path}, mimetype: 'audio/mp4'},
+        // { url: path }, // can send mp3, mp4, & ogg
+      )
+
+    } catch (error) {
+      if (error) {
+        console.error("Error en flowStaff:", error);
+      } else {
+        console.error("Error en flowStaff: El error es undefined, revisa la función textToVoice.");
+      }
+    }
+  }
+);
+
+const flowVoiceNote = addKeyword(EVENTS.VOICE_NOTE).addAction(
   async (ctx, ctxFn) => {
     try {
       await ctxFn.flowDynamic("dame un momento para escucharte...🙉");
@@ -75,9 +91,19 @@ const capturaVozFlow = addKeyword(EVENTS.VOICE_NOTE).addAction(
   }
 );
 
-const flowPrincipal = addKeyword('hola')
-    .addAnswer('Buenas bienvenido a mi ecommerce')
-    .addAnswer('¿Como puedo ayudarte el dia de hoy?')
+
+// add
+/**
+ * URI de la base de datos MongoDB.
+ * @type {string}
+ */
+const MONGO_DB_URI = process.env.MONGO_DB_URI;
+
+/**
+ * Nombre de la base de datos MongoDB.
+ * @type {string}
+ */
+const MONGO_DB_NAME = process.env.MONGO_DB_NAME;
 
 /* FIN CAPTURA */
 
@@ -90,19 +116,34 @@ const main = async () => {
     })
     // Configuración del flujo del bot con la bienvenida y captura de respuestas
     // const adapterFlow = createFlow([flowPrincipal])
-    const adapterFlow = createFlow([welcomeFlow, respuestaVozFlow, capturaVozFlow])
+    const adapterFlow = createFlow([welcomeFlow, flowVoiceNote, flowStaff])
     // Configuración del proveedor del bot
     const adapterProvider = createProvider(BaileysProvider)
 
-    const employees = [
-        {
-          name: "SOY HÉCTOR Y TE PUEDO AYUDAR CON TUS FINANZAS",
-          description:
-            "Soy un representante de VOZ FINANZAS, una empresa que brinda soluciones integrales de alto valor para el crecimiento y gestión eficiente de tu negocio. Ofrecemos servicios avanzados de contabilidad y facturación, gestión de trámites para el registro de marcas y constitución de sociedades, así como evaluaciones exhaustivas de archivos y asesoramiento contable personalizado. Nuestro enfoque está en optimizar tu operación comercial, asegurando que cada aspecto de tu gestión financiera sea impecable. Además, te brindamos herramientas para la toma de decisiones estratégicas, apoyo en la planificación fiscal y estrategias para mejorar la eficiencia operativa. Nuestro equipo de expertos está comprometido con ofrecer soluciones a medida que se adaptan a las necesidades únicas de tu empresa, garantizando no solo el cumplimiento de las obligaciones legales y fiscales sino también impulsando el crecimiento sostenible de tu negocio. Con VOZ FINANZAS, obtienes un aliado estratégico que utiliza la última tecnología y las mejores prácticas del sector para darte una ventaja competitiva en el mercado. Estamos aquí para resolver cualquier duda y ayudarte a navegar los desafíos de tu empresa con confianza y éxito.",
-          flow: respuestaVozFlow,
-        }
-      ];
-      employeesAddon.employees(employees);
+      /**
+   * 🤔 Empledos digitales
+   * Imaginar cada empleado descrito con sus deberes de manera explicita
+   */
+  const employees = [
+    {
+      name: "SOY HÉCTOR Y TE PUEDO AYUDAR CON TUS FINANZAS",
+      description:
+        "Soy un representante de VOZ FINANZAS, una empresa que brinda soluciones integrales de alto valor para el crecimiento y gestión eficiente de tu negocio. Ofrecemos servicios avanzados de contabilidad y facturación, gestión de trámites para el registro de marcas y constitución de sociedades, así como evaluaciones exhaustivas de archivos y asesoramiento contable personalizado. Nuestro enfoque está en optimizar tu operación comercial, asegurando que cada aspecto de tu gestión financiera sea impecable. Además, te brindamos herramientas para la toma de decisiones estratégicas, apoyo en la planificación fiscal y estrategias para mejorar la eficiencia operativa. Nuestro equipo de expertos está comprometido con ofrecer soluciones a medida que se adaptan a las necesidades únicas de tu empresa, garantizando no solo el cumplimiento de las obligaciones legales y fiscales sino también impulsando el crecimiento sostenible de tu negocio. Con VOZ FINANZAS, obtienes un aliado estratégico que utiliza la última tecnología y las mejores prácticas del sector para darte una ventaja competitiva en el mercado. Estamos aquí para resolver cualquier duda y ayudarte a navegar los desafíos de tu empresa con confianza y éxito.",
+      flow: flowStaff,
+    },
+    {
+      name: "not employee",
+      description: "Esta pregunta no está relacionada con nuestro negocio. ¿En qué puedo ayudarte en relación a nuestros servicios financieros?",
+      flow: flowStaff
+    },
+    {
+      name: null,
+      answer: "Lo siento, ha ocurrido un error inesperado. Por favor, inténtalo de nuevo más tarde",
+      flow: flowStaff
+    }
+  ];
+
+  employeesAddon.employees(employees);
 
     // Creación del bot con el flujo, proveedor y base de datos configurados
     const bot = await createBot({

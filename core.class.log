@@ -2,46 +2,38 @@
   key: {
     remoteJid: '5219993259344@s.whatsapp.net',
     fromMe: false,
-    id: 'DAEE0C9331C598479899C6A880D353CB',
+    id: 'E2B1EA381B6902675497EA34DB8DD0E1',
     participant: undefined
   },
-  messageTimestamp: 1712084516,
+  messageTimestamp: 1712135620,
   pushName: 'Elias U Xool-Feria🎮',
   broadcast: false,
   message: Message {
-    conversation: 'Hola',
+    audioMessage: AudioMessage {
+      url: 'https://mmg.whatsapp.net/v/t62.7117-24/21387225_1102165930892498_8504094292802603425_n.enc?ccb=11-4&oh=01_ASAOrG5iSmSJTsKETqhj03CO5U2ZiCiZ7FPlHnRqzVIwmQ&oe=66349E32&_nc_sid=5e03e0&mms3=true',
+      mimetype: 'audio/ogg; codecs=opus',
+      fileSha256: [Uint8Array],
+      fileLength: [Long],
+      seconds: 2,
+      ptt: false,
+      mediaKey: [Uint8Array],
+      fileEncSha256: [Uint8Array],
+      directPath: '/v/t62.7117-24/21387225_1102165930892498_8504094292802603425_n.enc?ccb=11-4&oh=01_ASAOrG5iSmSJTsKETqhj03CO5U2ZiCiZ7FPlHnRqzVIwmQ&oe=66349E32&_nc_sid=5e03e0&_nc_hot=1712135620',
+      mediaKeyTimestamp: [Long],
+      waveform: [Uint8Array]
+    },
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2
     }
   },
-  body: 'Hola',
-  from: '5219993259344'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5219993259344@s.whatsapp.net',
-    fromMe: false,
-    id: '5A15A055DD7AADBEEC66B90705317185',
-    participant: undefined
-  },
-  messageTimestamp: 1712084520,
-  pushName: 'Elias U Xool-Feria🎮',
-  broadcast: false,
-  message: Message {
-    conversation: 'Capturar',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: 'Capturar',
+  body: '_event_voice_note__843a2494-9bfd-4579-80bf-801a51154ade',
   from: '5219993259344'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_87715e3b-f938-43c7-9c82-6a0514f257ce',
-  keyword: 'key_19109a0f-a668-4e06-806e-bd3f7532a56a',
-  answer: '🙌 Hola, bienvenido a *VozFinanzas Chatbot*',
+  ref: 'ans_fc76e4a9-53a7-4f7e-806c-c5887f3c9e63',
+  keyword: 'key_3b1e3e28-e498-4e26-b731-f9d570fe8ef9',
+  answer: '__call_action__',
   options: {
     media: null,
     buttons: [],
@@ -52,84 +44,31 @@
     ref: null,
     nested: [],
     keyword: {},
-    callback: false
-  },
-  refSerialize: '3276148efc0210eae8e3abb38dc01759'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_2712f1b3-6773-4b3f-9a13-c21158b6cb14',
-  keyword: 'ans_87715e3b-f938-43c7-9c82-6a0514f257ce',
-  answer: 'Si buscas impulsar el crecimiento de tu empresa, estás en el lugar correcto.\n' +
-    'Por favor, elige una de las siguientes opciones para continuar:\n' +
-    '👉 Escribe *Aquí* si deseas registrarte directamente desde este chat. Es ideal para quienes usan nuestros servicios por primera vez.\n' +
-    '👉 Escribe *Form* si prefieres registrarte a través de nuestro formulario de Google. Esta opción es una alternativa de registro.\n' +
-    '👉 Escribe *Servicios* para conocer más sobre lo que ofrecemos. Un asistente te proporcionará la información necesaria.\n' +
-    '👉 Escribe *Presupuesto* si deseas recibir un estimado sobre el costo de nuestros servicios.',
-  options: {
-    media: null,
-    buttons: [],
-    capture: true,
-    child: null,
-    delay: 1000,
-    idle: null,
-    ref: null,
-    nested: [
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object]
-    ],
-    keyword: {},
     callback: true
   },
-  refSerialize: '27f4c225b21984baf4062ea857f809c9'
+  refSerialize: 'ee7a7fe49f5bb9acdf21c33c5b8797cd'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '5219993259344@s.whatsapp.net',
     fromMe: false,
-    id: '734C625D14AD0612C6F4D6E09A19D2BB',
+    id: '19A7E02BD47CDCD29F1F7817D6A1F402',
     participant: undefined
   },
-  messageTimestamp: 1712084525,
-  pushName: 'Elias U Xool-Feria🎮',
-  broadcast: false,
-  message: Message {
-    conversation: 'Aquí',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: 'Aquí',
-  from: '5219993259344'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5219993259344@s.whatsapp.net',
-    fromMe: false,
-    id: 'AD36394BBFDBECE3A418AA30ABB4E484',
-    participant: undefined
-  },
-  messageTimestamp: 1712084534,
+  messageTimestamp: 1712135650,
   pushName: 'Elias U Xool-Feria🎮',
   broadcast: false,
   message: Message {
     audioMessage: AudioMessage {
-      url: 'https://mmg.whatsapp.net/v/t62.7117-24/18898263_793109722710230_553870976858711880_n.enc?ccb=11-4&oh=01_ASCja-m1hpvytQdkYiWZvcyxc0EskSHpipIMlnI7WogxmQ&oe=6633CD28&_nc_sid=5e03e0&mms3=true',
+      url: 'https://mmg.whatsapp.net/v/t62.7117-24/382257454_995547691985716_4198931745713309554_n.enc?ccb=11-4&oh=01_ASDJV33Rbdr1buw31zr-gvHwjgvf7m-z5oDbW-M8w1KH3g&oe=663485C8&_nc_sid=5e03e0&mms3=true',
       mimetype: 'audio/ogg; codecs=opus',
       fileSha256: [Uint8Array],
       fileLength: [Long],
-      seconds: 2,
+      seconds: 1,
       ptt: true,
       mediaKey: [Uint8Array],
       fileEncSha256: [Uint8Array],
-      directPath: '/v/t62.7117-24/18898263_793109722710230_553870976858711880_n.enc?ccb=11-4&oh=01_ASCja-m1hpvytQdkYiWZvcyxc0EskSHpipIMlnI7WogxmQ&oe=6633CD28&_nc_sid=5e03e0',
+      directPath: '/v/t62.7117-24/382257454_995547691985716_4198931745713309554_n.enc?ccb=11-4&oh=01_ASDJV33Rbdr1buw31zr-gvHwjgvf7m-z5oDbW-M8w1KH3g&oe=663485C8&_nc_sid=5e03e0',
       mediaKeyTimestamp: [Long],
       waveform: [Uint8Array]
     },
@@ -138,6 +77,124 @@
       deviceListMetadataVersion: 2
     }
   },
-  body: '_event_voice_note__f28039a9-e9c2-4fe8-986a-c84b25121305',
+  body: '_event_voice_note__189bf4aa-e526-4f4a-88d5-74ea0693a4a7',
   from: '5219993259344'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_fc76e4a9-53a7-4f7e-806c-c5887f3c9e63',
+  keyword: 'key_3b1e3e28-e498-4e26-b731-f9d570fe8ef9',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'ee7a7fe49f5bb9acdf21c33c5b8797cd'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5219993259344@s.whatsapp.net',
+    fromMe: false,
+    id: '893125D418E2D30A31B4412567AB7816',
+    participant: undefined
+  },
+  messageTimestamp: 1712135676,
+  pushName: 'Elias U Xool-Feria🎮',
+  broadcast: false,
+  message: Message {
+    audioMessage: AudioMessage {
+      url: 'https://mmg.whatsapp.net/v/t62.7117-24/34507276_296595153526717_2357934782081392937_n.enc?ccb=11-4&oh=01_ASCNOYBS95awCTaJ5HKL7Jr-yPKlQfY3gg-DgK72dvlmKw&oe=66347851&_nc_sid=5e03e0&mms3=true',
+      mimetype: 'audio/ogg; codecs=opus',
+      fileSha256: [Uint8Array],
+      fileLength: [Long],
+      seconds: 1,
+      ptt: true,
+      mediaKey: [Uint8Array],
+      fileEncSha256: [Uint8Array],
+      directPath: '/v/t62.7117-24/34507276_296595153526717_2357934782081392937_n.enc?ccb=11-4&oh=01_ASCNOYBS95awCTaJ5HKL7Jr-yPKlQfY3gg-DgK72dvlmKw&oe=66347851&_nc_sid=5e03e0',
+      mediaKeyTimestamp: [Long],
+      waveform: [Uint8Array]
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: '_event_voice_note__6966b95f-539c-485e-8980-78ddd2b30fbd',
+  from: '5219993259344'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_fc76e4a9-53a7-4f7e-806c-c5887f3c9e63',
+  keyword: 'key_3b1e3e28-e498-4e26-b731-f9d570fe8ef9',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'ee7a7fe49f5bb9acdf21c33c5b8797cd'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5219993259344@s.whatsapp.net',
+    fromMe: false,
+    id: '6CE453496201C73CDEA1ADED264870CB',
+    participant: undefined
+  },
+  messageTimestamp: 1712135710,
+  pushName: 'Elias U Xool-Feria🎮',
+  broadcast: false,
+  message: Message {
+    audioMessage: AudioMessage {
+      url: 'https://mmg.whatsapp.net/v/t62.7117-24/12089258_454915883601392_7426641310686349785_n.enc?ccb=11-4&oh=01_ASB62PVrGSwYeM60kdOUuSeUS2bQwdeqC1YO9_qEkW68vg&oe=6634A313&_nc_sid=5e03e0&mms3=true',
+      mimetype: 'audio/ogg; codecs=opus',
+      fileSha256: [Uint8Array],
+      fileLength: [Long],
+      seconds: 1,
+      ptt: true,
+      mediaKey: [Uint8Array],
+      fileEncSha256: [Uint8Array],
+      directPath: '/v/t62.7117-24/12089258_454915883601392_7426641310686349785_n.enc?ccb=11-4&oh=01_ASB62PVrGSwYeM60kdOUuSeUS2bQwdeqC1YO9_qEkW68vg&oe=6634A313&_nc_sid=5e03e0',
+      mediaKeyTimestamp: [Long],
+      waveform: [Uint8Array]
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: '_event_voice_note__a5e9f08a-7d1f-4d2c-a4e3-5526cabed4eb',
+  from: '5219993259344'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_fc76e4a9-53a7-4f7e-806c-c5887f3c9e63',
+  keyword: 'key_3b1e3e28-e498-4e26-b731-f9d570fe8ef9',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'ee7a7fe49f5bb9acdf21c33c5b8797cd'
 }
