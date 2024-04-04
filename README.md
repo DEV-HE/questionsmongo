@@ -1,5 +1,7 @@
 ### CHATBOT Whatsapp (Baileys Provider)
 
+Este proyecto es el encargado de recopilar la información primaria del usuario al momento de que envia un mensaje. 
+
 <p align="center">
   <img width="300" src="https://i.imgur.com/Oauef6t.png">
 </p>
